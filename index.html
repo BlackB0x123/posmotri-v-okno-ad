@@ -84,7 +84,7 @@
     <!-- ТЕМПЛЕЙТЫ -->
 
     <template class="preloader-template">
-      <div class="preloader">
+      <div class="preloader" aria-hidden="true">
         <div class="preloader-chasing-squares">
           <div class="square"></div>
           <div class="square"></div>
@@ -102,7 +102,7 @@
               <h2 class="content__video-card-title"></h2>
               <p class="content__video-card-description"></p>
             </div>
-            <img src="" alt="" class="content__video-card-thumbnail" />
+            <img src="" alt="" loading="lazy" class="content__video-card-thumbnail" />
           </article>
         </a>
       </li>
@@ -116,6 +116,12 @@
         <h2 class="error__title">Из этого города нет видео :(</h2>
       </div>
     </template>
+    <!-- Локальные данные загружаются только с параметром ?mock=1. -->
+    <script>
+      if (new URLSearchParams(location.search).get('mock') === '1') {
+        document.write('<script src="./scripts/mock.js"><\/script>');
+      }
+    </script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
